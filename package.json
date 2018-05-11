@@ -5,6 +5,6 @@
   "author": "ihoey <mail@ihoey.com> (https://blog.ihoey.com/)",
   "license": "MIT",
   "dependencies": {
-    "peco": "^0.1.4"
+    "peco": "^0.1.6"
   }
 }
