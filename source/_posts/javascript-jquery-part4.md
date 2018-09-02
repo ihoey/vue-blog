@@ -8,7 +8,7 @@ tags:
 categories: javascript
 ---
 
-JQuery模块分析及其实现第四部分属性部分功能及实现,接第三部分!
+JQuery 模块分析及其实现第四部分属性部分功能及实现,接第三部分!
 
 <!-- more -->
 
@@ -17,17 +17,15 @@ JQuery模块分析及其实现第四部分属性部分功能及实现,接第三�
 1. 功能:将结果集中的元素 追加到指定的 `dom` 元素上.
 2. 语法:`<target对象>.appendTo(target)`
 3. 实现思路
-	* 定义 `appendTo` 方法,声明一个形参 `target` .追加到目标 `dom` 元素
-		* 选择器
-		* `dom` 元素
-		* `dom` 数组
-	* 为了操作方便,将 `target` 类型统一为 `itcast` 对象,去 `itcast` 函数走一圈,出来就是 `itcast` 对象.
-	* 遍历 `this` 上的每一个 `dom` 元素,再遍历 `target` 上的每一个 `dom` 元素
-	* 将 `this` 上的 `dom` 元素追加到 `target` 上
-	* 注意:
-		在追加节点时,如果遍历的是第一个目标 `dom` 元素,不需要拷贝节点;否则要深拷贝节点,并将上述得到的节点储存到 `ret` 内
-	* 将 `ret` 数组转换成 `itcast` 对象,作为 `appendTo` 方法的返回值
-		* 如果不这样做的话,就会在添加样式时,只有没拷贝的节点有样式
+   - 定义 `appendTo` 方法,声明一个形参 `target` .追加到目标 `dom` 元素
+     _ 选择器
+     _ `dom` 元素 \* `dom` 数组
+   - 为了操作方便,将 `target` 类型统一为 `itcast` 对象,去 `itcast` 函数走一圈,出来就是 `itcast` 对象.
+   - 遍历 `this` 上的每一个 `dom` 元素,再遍历 `target` 上的每一个 `dom` 元素
+   - 将 `this` 上的 `dom` 元素追加到 `target` 上
+   - 注意:
+     在追加节点时,如果遍历的是第一个目标 `dom` 元素,不需要拷贝节点;否则要深拷贝节点,并将上述得到的节点储存到 `ret` 内
+   - 将 `ret` 数组转换成 `itcast` 对象,作为 `appendTo` 方法的返回值 \* 如果不这样做的话,就会在添加样式时,只有没拷贝的节点有样式
 
 ```js
 appendTo: function(target) {
@@ -58,10 +56,10 @@ appendTo: function(target) {
 
 1. 语法: `<itcast对象>.append(source)` ;
 2. 功能: 将 `source` 上的所有 `dom` 元素,追加到 `itcast` 对象上
-2. 实现思路
-	* 统一 `source` 类型,为 `itcast` 对象.
-	* `source.appendTo(this)`
-	* `return this;`
+3. 实现思路
+   - 统一 `source` 类型,为 `itcast` 对象.
+   - `source.appendTo(this)`
+   - `return this;`
 
 ```js
 append: function(source) {
@@ -77,17 +75,17 @@ append: function(source) {
 1. 语法: `<itcast对象>.prependTo(target);`
 2. 功能:将 `itcast` 对象上的每一个 `dom` 元素,追加到 `target` 最前边 `insertBefore`
 3. 实现思路
-	* 统一 `target` 类型,为 `itcast` 对象
-	* 定义 `node` 变量,临时存储被追加的结点.定义 `ret` 数组,存储所有被追加的节点
-	* 先遍历 `target` 上的每一个 `dom` 元素
-	* 定义变量 `firstChild` ,临时存储当前目标 `dom` 元素的第一个子节点,再遍历 `this` 上的每一个 `dom` 元素
-	* 判断当前遍历的 `dom` 是否为 `target` 上的第一个 `dom` 元素
-	* 如果为真,此时不需要克隆节点
-	* 否则,要深克隆节点
-	* 将上述的到的节点, `push` 到 `ret` 内
-	* 调用 `insertBefore` 方法追加节点,此时第一个参数为追加新的节点,第二个参数为 `firstChild` ,在 `firstChild` 之前追加新节点.
-	* 两层循环结束,操作完成
-	* 将 `ret` 转换成 `itcast` 对象,作为 `prependTo` 方法的返回值,实现链式编程.
+   - 统一 `target` 类型,为 `itcast` 对象
+   - 定义 `node` 变量,临时存储被追加的结点.定义 `ret` 数组,存储所有被追加的节点
+   - 先遍历 `target` 上的每一个 `dom` 元素
+   - 定义变量 `firstChild` ,临时存储当前目标 `dom` 元素的第一个子节点,再遍历 `this` 上的每一个 `dom` 元素
+   - 判断当前遍历的 `dom` 是否为 `target` 上的第一个 `dom` 元素
+   - 如果为真,此时不需要克隆节点
+   - 否则,要深克隆节点
+   - 将上述的到的节点, `push` 到 `ret` 内
+   - 调用 `insertBefore` 方法追加节点,此时第一个参数为追加新的节点,第二个参数为 `firstChild` ,在 `firstChild` 之前追加新节点.
+   - 两层循环结束,操作完成
+   - 将 `ret` 转换成 `itcast` 对象,作为 `prependTo` 方法的返回值,实现链式编程.
 
 ```js
 prependTo: function(target) {
@@ -126,9 +124,9 @@ prependTo: function(target) {
 1. 语法: `<itcast对象>.prepend(source);`
 2. 功能:把 `source` 上的所有的 `dom` 元素,添加到 `this` 上的最前边
 3. 实现思路:
-	* 统一 `source` 类型,为 `itcast` 对象
-	* 通过 `source` 调用 `prependTo` 方法,将 `source` 上的所有 `dom` 添加到 `this` 上的最前边
-	*  `return this` 实现链式编程
+   - 统一 `source` 类型,为 `itcast` 对象
+   - 通过 `source` 调用 `prependTo` 方法,将 `source` 上的所有 `dom` 添加到 `this` 上的最前边
+   - `return this` 实现链式编程
 
 ```js
 prepend: function(source) {
@@ -143,10 +141,10 @@ prepend: function(source) {
 1. 功能:获取 `itcast` 对象上所有 `dom` 元素的下一个兄弟元素 `(nextSiling)`
 2. 语法: `<itcast对象>.next();` 返回值类型, `itcast` 对象
 3. 实现思路
-	* 定义 `ret` 数组，存储所有 `dom` 的下一个兄弟元素
-	* 遍历 `this` 上的所有 `dom` 元素
-	* 遍历当前 `dom` 元素下面的所有兄弟，如果类型为 元素，将此元素存储 `ret` 内，结束循环。
-	* 两层循环结束，将 `ret` 转换成 `itcast` 对象，作为 `next` 方法的返回值。
+   - 定义 `ret` 数组，存储所有 `dom` 的下一个兄弟元素
+   - 遍历 `this` 上的所有 `dom` 元素
+   - 遍历当前 `dom` 元素下面的所有兄弟，如果类型为 元素，将此元素存储 `ret` 内，结束循环。
+   - 两层循环结束，将 `ret` 转换成 `itcast` 对象，作为 `next` 方法的返回值。
 
 ```js
 next: function() {
@@ -174,10 +172,10 @@ next: function() {
 1. 功能:获取 `itcast` 对象上所有 `dom` 元素下面的所有兄弟元素 `(nextSiling)`
 2. 语法: `<itcast对象>.nextAll();` 返回值类型, `itcast` 对象
 3. 实现思路
-	* 定义 `ret` 数组，存储所有 `dom` 的下一个兄弟元素
-	* 遍历 `this` 上的所有 `dom` 元素
-	* 遍历当前 `dom` 元素下面的所有兄弟，如果类型为 元素，将此元素存储 `ret` 内，结束循环。
-	* 两层循环结束，将 `ret` 转换成 `itcast` 对象，作为 `nextAll` 方法的返回值。
+   - 定义 `ret` 数组，存储所有 `dom` 的下一个兄弟元素
+   - 遍历 `this` 上的所有 `dom` 元素
+   - 遍历当前 `dom` 元素下面的所有兄弟，如果类型为 元素，将此元素存储 `ret` 内，结束循环。
+   - 两层循环结束，将 `ret` 转换成 `itcast` 对象，作为 `nextAll` 方法的返回值。
 
 ```js
 nextAll: function() {
@@ -197,15 +195,15 @@ nextAll: function() {
 1. 功能:
 2. 语法: `<itcast对象>.before(source)`
 3. 实现思路
-	* 统一 `source` 类型为 `itcast` 对象
-	* 遍历 `this` 上的每一个 `dom` 元素
-	* 再遍历 `source` 上的每一个 `dom` 元素
-	* 判断当前遍历 `this`的 `dom` 元素的索引是否为0
-	* 如果是 `0` ,不需要拷贝节点
-	* 否则要深拷贝节点
-	* 先拿到当前遍历 `this` 的 `dom` 元素的父节点,调用 `insertBefore` 方法在其前面添加上面的到的新节点
-	* 两层循环完毕,操作完成
-	*  `return this` 实现链式编程
+   - 统一 `source` 类型为 `itcast` 对象
+   - 遍历 `this` 上的每一个 `dom` 元素
+   - 再遍历 `source` 上的每一个 `dom` 元素
+   - 判断当前遍历 `this`的 `dom` 元素的索引是否为 0
+   - 如果是 `0` ,不需要拷贝节点
+   - 否则要深拷贝节点
+   - 先拿到当前遍历 `this` 的 `dom` 元素的父节点,调用 `insertBefore` 方法在其前面添加上面的到的新节点
+   - 两层循环完毕,操作完成
+   - `return this` 实现链式编程
 
 ```js
 before: function(source) {
@@ -227,16 +225,16 @@ before: function(source) {
 1. 功能:
 2. 语法: `<itcast对象>.after(source)`
 3. 实现思路
-	* 定义 `nextSiling` 变量,存储 `dom` 元素的下一个兄弟节点
-	* 统一 `source` 类型为 `itcast` 对象
-	* 遍历 `this` 上的每一个 `dom` 元素
-	* 再遍历`source` 上的每一个 `dom` 元素
-	* 判断当前遍历 `this` 的 `dom` 元素的索引是否为 `0`
-	* 如果是 `0` ,不需要拷贝节点
-	* 否则要深拷贝节点
-	* 先拿到当前遍历 `this` 的 `dom` 元素的父节点,调用 `insertBefore` 方法在其前面添加上面的到的新节点
-	* 两层循环完毕,操作完成
-	*  `return this` 实现链式编程
+   - 定义 `nextSiling` 变量,存储 `dom` 元素的下一个兄弟节点
+   - 统一 `source` 类型为 `itcast` 对象
+   - 遍历 `this` 上的每一个 `dom` 元素
+   - 再遍历`source` 上的每一个 `dom` 元素
+   - 判断当前遍历 `this` 的 `dom` 元素的索引是否为 `0`
+   - 如果是 `0` ,不需要拷贝节点
+   - 否则要深拷贝节点
+   - 先拿到当前遍历 `this` 的 `dom` 元素的父节点,调用 `insertBefore` 方法在其前面添加上面的到的新节点
+   - 两层循环完毕,操作完成
+   - `return this` 实现链式编程
 
 ```js
 after: function(source) {
@@ -260,16 +258,16 @@ after: function(source) {
 1. 功能:实现数组元素去重
 2. 语法: `var newRet = itcast.unique(arr);`
 3. 实现思路
-	* 定义空数组对象 `ret` .存储去重后的元素
-	* 遍历原数组,如果当前遍历到的元素在 `ret` 中不存在,就添加 `ret` 内
-	* 循环结束, `ret` 存储的就是去重后的元素
-	* 返回 `ret`
-4. <a href="#code">兼容IE8 indexof 方法</a>
-	* 首先判断当前浏览器是否支持 `indexof` 方法
-	* 如果不支持就给数组对象的原型添加 `indexof` 方法
-	* 遍历 `this` 上的所有元素
-	* 如果遍历到的当前元素和指定参数值相同就直接返回其索引值.结束循环
-	* 如果在整个上述循环都没有返回值,那么表示不存在指定参数值就返回 `-1` .
+   - 定义空数组对象 `ret` .存储去重后的元素
+   - 遍历原数组,如果当前遍历到的元素在 `ret` 中不存在,就添加 `ret` 内
+   - 循环结束, `ret` 存储的就是去重后的元素
+   - 返回 `ret`
+4. <a href="#code">兼容 IE8 indexof 方法</a>
+   - 首先判断当前浏览器是否支持 `indexof` 方法
+   - 如果不支持就给数组对象的原型添加 `indexof` 方法
+   - 遍历 `this` 上的所有元素
+   - 如果遍历到的当前元素和指定参数值相同就直接返回其索引值.结束循环
+   - 如果在整个上述循环都没有返回值,那么表示不存在指定参数值就返回 `-1` .
 
 ```js
 unique: function(arr) {
@@ -290,21 +288,21 @@ unique: function(arr) {
 
 ```js
 // 兼容数组对象的indexOf方法
-(function() {
-	// 如果浏览器不支持indexOf方法
-	// 那么就给数组对象的原型添加indexOf方法
-	if(!Array.prototype.indexOf){
-		Array.prototype.indexOf = function(val) {
-			// 遍历this
-			for(var i = 0,l = this.length; i < l; i++){
-				// 如果遍历到的当前元素和val相同，返回其索引值
-				if(this[i] == val) return i;
-			}
-			// 那么表示不存在指定参数值就返回 -1
-			return -1;
-		};
-	}
-}());
+;(function() {
+  // 如果浏览器不支持indexOf方法
+  // 那么就给数组对象的原型添加indexOf方法
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(val) {
+      // 遍历this
+      for (var i = 0, l = this.length; i < l; i++) {
+        // 如果遍历到的当前元素和val相同，返回其索引值
+        if (this[i] == val) return i
+      }
+      // 那么表示不存在指定参数值就返回 -1
+      return -1
+    }
+  }
+})()
 ```
 
 ## prev 方法
@@ -312,10 +310,10 @@ unique: function(arr) {
 1. 功能: 获取 `itcast` 对象上所有 `dom` 元素的前一个兄弟元素 `(previousSibling)`
 2. 语法: `<itcast对象>.prev();` 返回值类型: `itcast对象`
 3. 实现思路
-	* 定义 `ret` 数组,存储所有 `dom` 的前一个兄弟元素
-	* 遍历 `this` 上的所有 `dom` 元素
-	* 遍历当前 `dom` 元素之前的所有兄弟,如果类型为元素,将此元素存储 `ret` 内,结束循环
-	* 两层循环结束,将 `ret` 转换成 `itcast` 对象,作为 `next` 方法的返回值
+   - 定义 `ret` 数组,存储所有 `dom` 的前一个兄弟元素
+   - 遍历 `this` 上的所有 `dom` 元素
+   - 遍历当前 `dom` 元素之前的所有兄弟,如果类型为元素,将此元素存储 `ret` 内,结束循环
+   - 两层循环结束,将 `ret` 转换成 `itcast` 对象,作为 `next` 方法的返回值
 
 ```js
 prev:function(){
@@ -343,10 +341,10 @@ prev:function(){
 1. 功能: 获取 `itcast` 对象上所有 `dom` 元素的之前的所有兄弟元素 `(nextSibling)`
 2. 语法: `<itcast对象>.nextAll();` 返回值类型: `itcast对象`
 3. 实现思路
-	* 定义 `ret数组` ,存储所有 `dom` 之前的所有兄弟元素
-	* 遍历 `this` 上的所有 `dom元素`
-	* 遍历当前 `dom` 元素之前的所有兄弟,如果类型为元素,将此元素存储 `ret` 内,结束循环
-	* 两层循环结束,将 `ret` 转换成 `itcast对象` ,作为 `nextAll` 方法的返回值
+   - 定义 `ret数组` ,存储所有 `dom` 之前的所有兄弟元素
+   - 遍历 `this` 上的所有 `dom元素`
+   - 遍历当前 `dom` 元素之前的所有兄弟,如果类型为元素,将此元素存储 `ret` 内,结束循环
+   - 两层循环结束,将 `ret` 转换成 `itcast对象` ,作为 `nextAll` 方法的返回值
 
 ```js
 prevAll:function(){

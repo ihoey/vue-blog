@@ -8,7 +8,7 @@ tags:
 categories: javascript
 ---
 
-JQuery模块分析及其实现第七部分 Ajax 部分功能及实现,接第六部分!
+JQuery 模块分析及其实现第七部分 Ajax 部分功能及实现,接第六部分!
 
 <!-- more -->
 
@@ -18,29 +18,32 @@ JQuery模块分析及其实现第七部分 Ajax 部分功能及实现,接第六�
 
 ```js
 function createRequest() {
-	return window.XMLHttpRequest ? new window.XMLHttpRequest() :
-		new ActiveXObject('Microsoft.XMLHTTP');
+  return window.XMLHttpRequest
+    ? new window.XMLHttpRequest()
+    : new ActiveXObject('Microsoft.XMLHTTP')
 }
 
-var xhr = createRequest();
-console.log(xhr);
+var xhr = createRequest()
+console.log(xhr)
 ```
 
 2. 格式化数据
-	* 将格式化后的数据,参数与值都要重新编码
+   - 将格式化后的数据,参数与值都要重新编码
 
 ```js
-function formatData(data){
-    var ret = [];
-    for(var k in data){
-        ret.push(window.encodeURIComponent(k) + '=' + window.encodeURIComponent(data[k]));
-    }
-		// 如果不想从服务器缓存中读取数据
-	ret.push(('_=' + Math.random()).replace('.', ''));
-    return ret.join('&');
+function formatData(data) {
+  var ret = []
+  for (var k in data) {
+    ret.push(
+      window.encodeURIComponent(k) + '=' + window.encodeURIComponent(data[k])
+    )
+  }
+  // 如果不想从服务器缓存中读取数据
+  ret.push(('_=' + Math.random()).replace('.', ''))
+  return ret.join('&')
 }
-var data = {name: '梦魇小栈',age: 2,url:'http://blog.ihoey.com'};
-console.log(formatData(data));//name=%E6%A2%A6%E9%AD%87%E5%B0%8F%E6%A0%88&age=2&url=http%3A%2F%2Fblog.ihoey.com
+var data = { name: '梦魇小栈', age: 2, url: 'http://blog.ihoey.com' }
+console.log(formatData(data)) //name=%E6%A2%A6%E9%AD%87%E5%B0%8F%E6%A0%88&age=2&url=http%3A%2F%2Fblog.ihoey.com
 ```
 
 3. 与服务器建立连接
@@ -48,7 +51,7 @@ console.log(formatData(data));//name=%E6%A2%A6%E9%AD%87%E5%B0%8F%E6%A0%88&age=2&
 5. 发送请求
 6. 封装
 
-```js
+```html
 <script>
 	// 默认配置信息
 	ajaxSetting = {
@@ -142,16 +145,15 @@ console.log(formatData(data));//name=%E6%A2%A6%E9%AD%87%E5%B0%8F%E6%A0%88&age=2&
 	});
 </script>
 ```
+
 ## Jsonp 请求
 
 1. 跨域 只能发送 `GET` 请求 . 一种不安全的请求方式
 2. 原理:由于 `dom` 元素的 `src` 属性,具有跨域功能. 在实现跨域请求时,为了方便就使用 `script` 标签来做.
 3. 流程
-	* 创建请求对象,就是创建一个 `script` 标签
-	* 将上述创建的 `script` 标签添加到页面的 `head` 标签下
-	* 格式化数据
-	* 创建全局回调函数
-	* 设置超时时间,如果超过此时间,也没有得到数据,表示请求失败.否则,请求成功
-	* 发送请求: 指定 `script` 标签的 `src` 属性值
-
-
+   - 创建请求对象,就是创建一个 `script` 标签
+   - 将上述创建的 `script` 标签添加到页面的 `head` 标签下
+   - 格式化数据
+   - 创建全局回调函数
+   - 设置超时时间,如果超过此时间,也没有得到数据,表示请求失败.否则,请求成功
+   - 发送请求: 指定 `script` 标签的 `src` 属性值

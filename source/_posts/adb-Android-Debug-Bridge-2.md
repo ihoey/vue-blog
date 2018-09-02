@@ -8,8 +8,8 @@ tags:
 categories: Android
 ---
 
-ADB很强大，记住一些ADB命令有助于提高工作效率。
-通过ADB命令查看wifi密码、MAC地址、设备信息、操作文件、查看文件、日志信息、卸载、启动和安装APK等
+ADB 很强大，记住一些 ADB 命令有助于提高工作效率。
+通过 ADB 命令查看 wifi 密码、MAC 地址、设备信息、操作文件、查看文件、日志信息、卸载、启动和安装 APK 等
 
 <!-- more -->
 
@@ -17,34 +17,34 @@ ADB很强大，记住一些ADB命令有助于提高工作效率。
 
 - `adb logcat` -- 查看日志
 - `adb shell dumpsys battery` -- 电池状况
-其中 scale 代表最大电量，level 代表当前电量。上面的输出表示还剩下 44% 的电量
+  其中 scale 代表最大电量，level 代表当前电量。上面的输出表示还剩下 44% 的电量
 - `adb reboot` -- 重启
 - `adb get-serialno` -- 获取序列号
-- `adb shell  cat /sys/class/net/wlan0/address` -- MAC 地址
+- `adb shell cat /sys/class/net/wlan0/address` -- MAC 地址
 - `adb shell getprop ro.product.model` -- 型号
 - `adb shell getprop ro.build.version.release` -- 查看 Android 系统版本
 - `adb shell wm size` -- 查看屏幕分辨率
 - `adb shell wm density` -- 查看屏幕密度
 - `adb shell dumpsys window displays` -- 显示屏参数
 - `adb shell settings get secure android_id` -- android_id
-- `adb shell ifconfig | grep Mask` -- IP 地址(powershell无效)
+- `adb shell ifconfig | grep Mask` -- IP 地址(powershell 无效)
 - `adb shell cat /proc/cpuinfo` -- CPU 信息
 - `adb shell cat /proc/meminfo` -- 内存信息(输出内容: `MemTotal` 总内存，`MemFree` 空闲内存)
 - `adb shell cat /system/build.prop` -- 更多硬件与系统属性
 
-| 属性名                              | 含义                         |
-| :---------------------------------: | :--------------------------: |
-| ro.build.version.sdk                | SDK 版本                     |
-| ro.build.version.release            | Android 系统版本             |
-| ro.build.version.security_patch     | Android 安全补丁程序级别     |
-| ro.product.model                    | 型号                         |
-| ro.product.brand                    | 品牌                         |
-| ro.product.name                     | 设备名                       |
-| ro.product.board                    | 处理器型号                   |
-| ro.product.cpu.abilist              | CPU 支持的 abi 列表          |
-| persist.sys.isUsbOtgEnabled         | 是否支持 OTG                 |
-| dalvik.vm.heapsize                  | 每个应用程序的内存上限       |
-| ro.sf.lcd_density                   | 屏幕密度                     |
+|             属性名              |           含义           |
+| :-----------------------------: | :----------------------: |
+|      ro.build.version.sdk       |         SDK 版本         |
+|    ro.build.version.release     |     Android 系统版本     |
+| ro.build.version.security_patch | Android 安全补丁程序级别 |
+|        ro.product.model         |           型号           |
+|        ro.product.brand         |           品牌           |
+|         ro.product.name         |          设备名          |
+|        ro.product.board         |        处理器型号        |
+|     ro.product.cpu.abilist      |   CPU 支持的 abi 列表    |
+|   persist.sys.isUsbOtgEnabled   |       是否支持 OTG       |
+|       dalvik.vm.heapsize        |  每个应用程序的内存上限  |
+|        ro.sf.lcd_density        |         屏幕密度         |
 
 ## 修改设置
 
@@ -56,15 +56,15 @@ ADB很强大，记住一些ADB命令有助于提高工作效率。
 
 命令：
 
-```sh
+```bash
 adb shell wm size 480x1024
 ```
 
-表示将分辨率修改为 480px * 1024px。
+表示将分辨率修改为 480px \* 1024px。
 
 恢复原分辨率命令：
 
-```sh
+```bash
 adb shell wm size reset
 ```
 
@@ -72,7 +72,7 @@ adb shell wm size reset
 
 命令：
 
-```sh
+```bash
 adb shell wm density 160
 ```
 
@@ -80,7 +80,7 @@ adb shell wm density 160
 
 恢复原屏幕密度命令：
 
-```sh
+```bash
 adb shell wm density reset
 ```
 
@@ -88,7 +88,7 @@ adb shell wm density reset
 
 命令：
 
-```sh
+```bash
 adb shell wm overscan 0,0,0,200
 ```
 
@@ -96,7 +96,7 @@ adb shell wm overscan 0,0,0,200
 
 恢复原显示区域命令：
 
-```sh
+```bash
 adb shell wm overscan reset
 ```
 
@@ -104,7 +104,7 @@ adb shell wm overscan reset
 
 命令：
 
-```sh
+```bash
 adb shell settings put global adb_enabled 0
 ```
 
@@ -120,37 +120,37 @@ adb shell settings put global adb_enabled 0
 
 命令：
 
-```sh
+```bash
 adb shell settings put global policy_control <key-values>
 ```
 
 `<key-values>` 可由如下几种键及其对应的值组成，格式为 `<key1>=<value1>:<key2>=<value2>`。
 
-| key                       | 含义           |
-| :-----------------------: | :------------: |
-| immersive.full            | 同时隐藏       |
-| immersive.status          | 隐藏状态栏     |
-| immersive.navigation      | 隐藏导航栏     |
-| immersive.preconfirms     | ?              |
+|          key          |    含义    |
+| :-------------------: | :--------: |
+|    immersive.full     |  同时隐藏  |
+|   immersive.status    | 隐藏状态栏 |
+| immersive.navigation  | 隐藏导航栏 |
+| immersive.preconfirms |     ?      |
 
 这些键对应的值可则如下值用逗号组合：
 
-| value              | 含义             |
-| :----------------: | :--------------: |
-| `apps`             | 所有应用         |
-| `*`                | 所有界面         |
-| `packagename`      | 指定应用         |
-| `-packagename`     | 排除指定应用     |
+|     value      |     含义     |
+| :------------: | :----------: |
+|     `apps`     |   所有应用   |
+|      `*`       |   所有界面   |
+| `packagename`  |   指定应用   |
+| `-packagename` | 排除指定应用 |
 
 例如：
 
-```sh
+```bash
 adb shell settings put global policy_control immersive.full=*
 ```
 
 表示设置在所有界面下都同时隐藏状态栏和导航栏。
 
-```sh
+```bash
 adb shell settings put global policy_control immersive.status=com.package1,com.package2:immersive.navigation=apps,-com.package3
 ```
 
@@ -162,28 +162,28 @@ adb shell settings put global policy_control immersive.status=com.package1,com.p
 
 命令：
 
-```sh
+```bash
 adb shell screencap -p /sdcard/sc.png
 ```
 
 然后将 png 文件导出到电脑：
 
-```sh
+```bash
 adb pull /sdcard/sc.png
 ```
 
 可以使用 `adb shell screencap -h` 查看 `screencap` 命令的帮助信息，下面是两个有意义的参数及含义：
 
-| 参数              | 含义                                           |
-| :---------------: | :--------------------------------------------: |
-| -p                | 指定保存文件为 png 格式                        |
-| -d display-id     | 指定截图的显示屏编号（有多显示屏的情况下）     |
+|     参数      |                    含义                    |
+| :-----------: | :----------------------------------------: |
+|      -p       |          指定保存文件为 png 格式           |
+| -d display-id | 指定截图的显示屏编号（有多显示屏的情况下） |
 
 实测如果指定文件名以 `.png` 结尾时可以省略 -p 参数；否则需要使用 -p 参数。如果不指定文件名，截图文件的内容将直接输出到 stdout。
 
 直接一行命令截图并保存到电脑的方法：
 
-```sh
+```bash
 adb shell screencap -p | sed "s/\r$//" > sc.png
 ```
 
@@ -193,7 +193,7 @@ adb shell screencap -p | sed "s/\r$//" > sc.png
 
 录制屏幕以 mp4 格式保存到 /sdcard：
 
-```sh
+```bash
 adb shell screenrecord /sdcard/filename.mp4
 ```
 
@@ -201,18 +201,18 @@ adb shell screenrecord /sdcard/filename.mp4
 
 如果需要导出到电脑：
 
-```sh
+```bash
 adb pull /sdcard/filename.mp4
 ```
 
 可以使用 `adb shell screenrecord --help` 查看 `screenrecord` 命令的帮助信息，下面是常见参数及含义：
 
-| 参数                    | 含义                                                |
-| :---------------------: | :-------------------------------------------------: |
-| --size WIDTHxHEIGHT     | 视频的尺寸，比如 `1280x720`，默认是屏幕分辨率。     |
-| --bit-rate RATE         | 视频的比特率，默认是 4Mbps。                        |
-| --time-limit TIME       | 录制时长，单位秒。                                  |
-| --verbose               | 输出更多信息。                                      |
+|        参数         |                      含义                       |
+| :-----------------: | :---------------------------------------------: |
+| --size WIDTHxHEIGHT | 视频的尺寸，比如 `1280x720`，默认是屏幕分辨率。 |
+|   --bit-rate RATE   |          视频的比特率，默认是 4Mbps。           |
+|  --time-limit TIME  |               录制时长，单位秒。                |
+|      --verbose      |                 输出更多信息。                  |
 
 ### 重新挂载 system 分区为可写
 
@@ -226,7 +226,7 @@ adb pull /sdcard/filename.mp4
 
    命令：
 
-   ```sh
+   ```bash
    adb shell
    su
    ```
@@ -235,13 +235,13 @@ adb pull /sdcard/filename.mp4
 
    命令：
 
-   ```sh
+   ```bash
    mount
    ```
 
    输出示例：
 
-   ```sh
+   ```bash
    rootfs / rootfs ro,relatime 0 0
    tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
    devpts /dev/pts devpts rw,seclabel,relatime,mode=600 0 0
@@ -271,7 +271,7 @@ adb pull /sdcard/filename.mp4
 
    找到其中我们关注的带 /system 的那一行：
 
-   ```sh
+   ```bash
    /dev/block/platform/msm_sdcc.1/by-name/system /system ext4 ro,seclabel,relatime,data=ordered 0 0
    ```
 
@@ -279,7 +279,7 @@ adb pull /sdcard/filename.mp4
 
    命令：
 
-   ```sh
+   ```bash
    mount -o remount,rw -t yaffs2 /dev/block/platform/msm_sdcc.1/by-name/system /system
    ```
 
@@ -293,7 +293,7 @@ adb pull /sdcard/filename.mp4
 
 命令：
 
-```sh
+```bash
 adb shell
 su
 cat /data/misc/wifi/*.conf
@@ -301,7 +301,7 @@ cat /data/misc/wifi/*.conf
 
 输出示例：
 
-```sh
+```bash
 network={
     ssid="TP-LINK_9DFC"
     scan_ssid=1
@@ -330,7 +330,7 @@ network={
 
 命令：
 
-```sh
+```bash
 adb shell
 su
 date -s 20160823.131500
@@ -342,7 +342,7 @@ date -s 20160823.131500
 
 命令：
 
-```sh
+```bash
 adb reboot
 ```
 
@@ -350,7 +350,7 @@ adb reboot
 
 命令：
 
-```sh
+```bash
 adb shell
 su
 ```
@@ -363,11 +363,11 @@ Monkey 可以生成伪随机用户事件来模拟单击、触摸、手势等操�
 
 简单用法：
 
-```sh
-adb shell monkey -p <packagename> -v 500
+```bash
+adb shell monkey -p \<packagename\> -v 500
 ```
 
-表示向 `<packagename>` 指定的应用程序发送 500 个伪随机事件。
+表示向 `\<packagename\>` 指定的应用程序发送 500 个伪随机事件。
 
 Monkey 的详细用法参考 [官方文档](https://developer.android.com/studio/test/monkey.html)。
 
@@ -379,14 +379,14 @@ Monkey 的详细用法参考 [官方文档](https://developer.android.com/studio
 
 开启 WiFi：
 
-```sh
+```bash
 adb root
 adb shell svc wifi enable
 ```
 
 关闭 WiFi：
 
-```sh
+```bash
 adb root
 adb shell svc wifi disable
 ```
@@ -399,7 +399,7 @@ adb shell svc wifi disable
 
 命令：
 
-```sh
+```bash
 adb reboot recovery
 ```
 
@@ -407,7 +407,7 @@ adb reboot recovery
 
 命令：
 
-```sh
+```bash
 adb reboot
 ```
 
@@ -415,7 +415,7 @@ adb reboot
 
 命令：
 
-```sh
+```bash
 adb reboot bootloader
 ```
 
@@ -429,7 +429,7 @@ adb reboot bootloader
 
    命令：
 
-   ```sh
+   ```bash
    adb reboot recovery
    ```
 
@@ -441,7 +441,7 @@ adb reboot bootloader
 
    命令：
 
-   ```sh
+   ```bash
    adb sideload <path-to-update.zip>
    ```
 
@@ -453,13 +453,13 @@ Android 系统是基于 Linux 内核的，所以 Linux 里的很多命令在 And
 
 命令：
 
-```sh
+```bash
 adb shell ps
 ```
 
 输出示例：
 
-```sh
+```bash
 USER     PID   PPID  VSIZE  RSS     WCHAN    PC        NAME
 root      1     0     8904   788   ffffffff 00000000 S /init
 root      2     0     0      0     ffffffff 00000000 S kthreadd
@@ -472,24 +472,24 @@ shell     8750  217   10640  740   00000000 b6f28340 R ps
 
 各列含义：
 
-| 列名     | 含义          |
-| :------: | :-----------: |
-| USER     | 所属用户      |
-| PID      | 进程 ID       |
-| PPID     | 父进程 ID     |
-| NAME     | 进程名        |
+| 列名 |   含义    |
+| :--: | :-------: |
+| USER | 所属用户  |
+| PID  |  进程 ID  |
+| PPID | 父进程 ID |
+| NAME |  进程名   |
 
 ### 查看实时资源占用情况
 
 命令：
 
-```sh
+```bash
 adb shell top
 ```
 
 输出示例：
 
-```sh
+```bash
 User 0%, System 6%, IOW 0%, IRQ 0%
 User 3 + Nice 0 + Sys 21 + Idle 280 + IOW 0 + IRQ 0 + SIRQ 3 = 307
 
@@ -508,22 +508,22 @@ User 3 + Nice 0 + Sys 21 + Idle 280 + IOW 0 + IRQ 0 + SIRQ 3 = 307
 
 各列含义：
 
-| 列名     | 含义                                                           |
-| :------: | :------------------------------------------------------------: |
-| PID      | 进程 ID                                                        |
-| PR       | 优先级                                                         |
-| CPU%     | 当前瞬间占用 CPU 百分比                                        |
-| S        | 进程状态（R=运行，S=睡眠，T=跟踪/停止，Z=僵尸进程）            |
-| #THR     | 线程数                                                         |
-| VSS      | Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）          |
-| RSS      | Resident Set Size 实际使用物理内存（包含共享库占用的内存）     |
-| PCY      | 调度策略优先级，SP_BACKGROUND/SPFOREGROUND                     |
-| UID      | 进程所有者的用户 ID                                            |
-| NAME     | 进程名                                                         |
+| 列名 |                            含义                            |
+| :--: | :--------------------------------------------------------: |
+| PID  |                          进程 ID                           |
+|  PR  |                           优先级                           |
+| CPU% |                  当前瞬间占用 CPU 百分比                   |
+|  S   |    进程状态（R=运行，S=睡眠，T=跟踪/停止，Z=僵尸进程）     |
+| #THR |                           线程数                           |
+| VSS  |   Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）    |
+| RSS  | Resident Set Size 实际使用物理内存（包含共享库占用的内存） |
+| PCY  |         调度策略优先级，SP_BACKGROUND/SPFOREGROUND         |
+| UID  |                    进程所有者的用户 ID                     |
+| NAME |                           进程名                           |
 
 `top` 命令还支持一些命令行参数，详细用法如下：
 
-```sh
+```bash
 Usage: top [ -m max_procs ] [ -n iterations ] [ -d delay ] [ -s sort_column ] [ -t ] [ -h ]
     -m num  最多显示多少个进程
     -n num  刷新多少次后退出
@@ -537,20 +537,20 @@ Usage: top [ -m max_procs ] [ -n iterations ] [ -d delay ] [ -s sort_column ] [ 
 
 如下是其它常用命令的简单描述，前文已经专门讲过的命令不再额外说明：
 
-| 命令      | 功能                            |
-| :-------: | :-----------------------------: |
-| cat       | 显示文件内容                    |
-| cd        | 切换目录                        |
-| chmod     | 改变文件的存取模式/访问权限     |
-| df        | 查看磁盘空间使用情况            |
-| grep      | 过滤输出                        |
-| kill      | 杀死指定 PID 的进程             |
-| ls        | 列举目录内容                    |
-| mount     | 挂载目录的查看和管理            |
-| mv        | 移动或重命名文件                |
-| ps        | 查看正在运行的进程              |
-| rm        | 删除文件                        |
-| top       | 查看进程的资源占用情况          |
+| 命令  |            功能             |
+| :---: | :-------------------------: |
+|  cat  |        显示文件内容         |
+|  cd   |          切换目录           |
+| chmod | 改变文件的存取模式/访问权限 |
+|  df   |    查看磁盘空间使用情况     |
+| grep  |          过滤输出           |
+| kill  |     杀死指定 PID 的进程     |
+|  ls   |        列举目录内容         |
+| mount |    挂载目录的查看和管理     |
+|  mv   |      移动或重命名文件       |
+|  ps   |     查看正在运行的进程      |
+|  rm   |          删除文件           |
+|  top  |   查看进程的资源占用情况    |
 
 ## 常见问题
 
@@ -558,10 +558,9 @@ Usage: top [ -m max_procs ] [ -n iterations ] [ -d delay ] [ -s sort_column ] [ 
 
 **出错提示**
 
-```sh
+```bash
 error: protocol fault (couldn\'t read status): No error
 ```
-
 
 **可能原因**
 
@@ -571,7 +570,7 @@ adb server 进程想使用的 5037 端口被占用。
 
 找到占用 5037 端口的进程，然后终止它。以 Windows 下为例：
 
-```sh
+```bash
 netstat -ano | findstr LISTENING
 
 ...
@@ -581,7 +580,7 @@ TCP    0.0.0.0:5037           0.0.0.0:0              LISTENING       1548
 
 这里 1548 即为进程 ID，用命令结束该进程：
 
-```sh
+```bash
 taskkill /PID 1548
 ```
 

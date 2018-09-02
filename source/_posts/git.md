@@ -6,13 +6,14 @@ tags:
 categories: Git
 ---
 
-最近用Git比较多，所以大概整理下 **Git是目前世界上最先进的分布式版本控制系统。**
+最近用 Git 比较多，所以大概整理下 **Git 是目前世界上最先进的分布式版本控制系统。**
 
 <!--more-->
 
 ## 安装
 
 安装软件就不多说了，这个肯定都会了
+
 - 下载地址：<a class="active" href="https://git-scm.com/downloads" rel="nofollow">Downloads</a>
 
 ## 配置
@@ -40,7 +41,6 @@ ssh-keygen -t rsa -C "mail@ihoey.com"
 # id_rsa.pub为你的公钥，一般会放在你的服务器做ssh登录，或者放在github上面
 ```
 
-
 ## GitHub 测试
 
 ```bash
@@ -54,7 +54,7 @@ ssh -T git@github.com
 - 添加文件到暂存区 `git add fileName` / `git add .`
 - 提交文件到仓库 `git commit -m "版本提交信息"`
 - 查看文件提交状态 `git status`
-- 查看文件修改的信息 `git diff readme.txt `
+- 查看文件修改的信息 `git diff readme.txt`
 
 ```bash
 git help <command>          # 显示command的help
@@ -79,7 +79,6 @@ git commit -m "some comments"
 git revert <$id>            # 恢复某次提交的状态，恢复动作本身也创建了一次提交对象
 git revert HEAD             # 恢复最后一次提交的状态
 ```
-
 
 ## 查看文件
 
@@ -121,7 +120,7 @@ git branch -d <branch>                  # 删除某个分支
 git branch -D <branch>                  # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
 ```
 
-## 分支合并和rebase
+## 分支合并和 rebase
 
 ```bash
 git merge <branch>               # 将branch分支合并到当前分支
@@ -130,10 +129,10 @@ git rebase master <branch>       # 将master rebase到branch，相当于：
 git checkout <branch> && git rebase master && git checkout master && git merge <branch>
 ```
 
-- 在我们操作过程中。`merge `操作遇到冲突的时候，当前`merge`不能继续进行下去。手动修改冲突内容后，`add` 修改，`commit` 就可以了。
+- 在我们操作过程中。`merge`操作遇到冲突的时候，当前`merge`不能继续进行下去。手动修改冲突内容后，`add` 修改，`commit` 就可以了。
 - 而`rebase` 操作的话，会中断`rebase`,同时会提示去解决冲突。解决冲突后,将修改`add`后执行`git rebase –continue`继续操作，或者`git rebase –skip`忽略冲突。
 
-## Git暂存管理
+## Git 暂存管理
 
 ```bash
 git stash                        # 暂存
@@ -159,7 +158,7 @@ git push origin <local_branch>:<remote_branch>  # 创建远程分支
 git push origin :<remote_branch> #先删除本地分支(git br -d <branch>)，然后再push删除远程分支
 ```
 
-## Git远程仓库管理
+## Git 远程仓库管理
 
 ```bash
 git remote -v                    # 查看远程服务器地址和仓库名称

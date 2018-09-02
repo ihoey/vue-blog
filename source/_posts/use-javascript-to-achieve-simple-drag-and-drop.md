@@ -29,11 +29,11 @@ categories:
 **绑定事件：**
 
 ```javascript
-var box = document.getElementById('box');
+var box = document.getElementById('box')
 
-box.onmousedown = down;
-document.onmousemove = move;
-document.onmouseup = up;
+box.onmousedown = down
+document.onmousemove = move
+document.onmouseup = up
 ```
 
 ## 获取鼠标位置
@@ -44,25 +44,26 @@ document.onmouseup = up;
 - `offsetX / offsetY` : 相对事件目标对象坐标
 - `pageX / pageY` : 相对 `document` 对象坐标
 
-一般鼠标的位置使用 `pageX / pageY` 获取，但是 IE 不支持这两个属性。所以在 IE 中使用 `event.clientX + document.body.scrollLeft - document.body.clientLeft; `获取鼠标的位置。
+一般鼠标的位置使用 `pageX / pageY` 获取，但是 IE 不支持这两个属性。所以在 IE 中使用 `event.clientX + document.body.scrollLeft - document.body.clientLeft;`获取鼠标的位置。
 
 **获取鼠标位置的函数：**
 
 ```javascript
 function getMouseXY(e) {
-  var x = 0, y = 0;
-  e = e || window.event;
+  var x = 0,
+    y = 0
+  e = e || window.event
   if (e.pageX) {
-    x = e.pageX;
-    y = e.pageY;
+    x = e.pageX
+    y = e.pageY
   } else {
-    x = e.clientX + document.body.scrollLeft - document.body.clientLeft;
-    y = e.clientY + document.body.scrollTop - document.body.clientTop;
+    x = e.clientX + document.body.scrollLeft - document.body.clientLeft
+    y = e.clientY + document.body.scrollTop - document.body.clientTop
   }
   return {
     x: x,
     y: y
-  };
+  }
 }
 ```
 
@@ -75,13 +76,13 @@ function getMouseXY(e) {
 
 ```javascript
 function down(e) {
-  dragging = true;
-  boxX = box.offsetLeft;
-  boxY = box.offsetTop;
-  mouseX = parseInt(getMouseXY(e).x);
-  mouseY = parseInt(getMouseXY(e).y);
-  offsetX = mouseX - boxX;
-  offsetY = mouseY - boxY;
+  dragging = true
+  boxX = box.offsetLeft
+  boxY = box.offsetTop
+  mouseX = parseInt(getMouseXY(e).x)
+  mouseY = parseInt(getMouseXY(e).y)
+  offsetX = mouseX - boxX
+  offsetY = mouseY - boxY
 }
 ```
 
@@ -94,16 +95,16 @@ function down(e) {
 ```javascript
 function move(e) {
   if (dragging) {
-    var x = getMouseXY(e).x - offsetX;
-    var y = getMouseXY(e).y - offsetY;
-    var width = document.documentElement.clientWidth - box.offsetWidth;
-    var height = document.documentElement.clientHeight - box.offsetHeight;
+    var x = getMouseXY(e).x - offsetX
+    var y = getMouseXY(e).y - offsetY
+    var width = document.documentElement.clientWidth - box.offsetWidth
+    var height = document.documentElement.clientHeight - box.offsetHeight
 
-    x = Math.min(Math.max(0, x), width);
-    y = Math.min(Math.max(0, y), height);
+    x = Math.min(Math.max(0, x), width)
+    y = Math.min(Math.max(0, y), height)
 
-    box.style.left = x + 'px';
-    box.style.top = y + 'px';
+    box.style.left = x + 'px'
+    box.style.top = y + 'px'
   }
 }
 ```
@@ -116,7 +117,7 @@ function move(e) {
 
 ```javascript
 function up(e) {
-  dragging = false;
+  dragging = false
 }
 ```
 

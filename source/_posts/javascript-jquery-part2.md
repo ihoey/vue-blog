@@ -8,20 +8,21 @@ tags:
 categories: javascript
 ---
 
-JQuery模块分析及其实现第二部分css部分功能及实现,接第一部分!
+JQuery 模块分析及其实现第二部分 css 部分功能及实现,接第一部分!
 
 <!-- more -->
 
-## hasClass方法
+## hasClass 方法
 
 1. 功能:如果结果集里只要有一个 `dom` 元素,具有指定的样式类,就返回 `true`
 2. 实现思路
-	* 定义结果变量 `ret` ,默认值为 `false`
-	* 遍历结果集的每一个 `dom` 元素,如果当前 `dom` 元素具有指定的样式类,将 `ret=true` 结束循环
-	* 返回 `ret` .
 
-	* 如何判断 `dom` 元素具有指定的样式类?
-	在 `dom` 元素所有的样式类的 `首位 + 空格` ;在用户指定的样式类 `首位 + 空格` 调用indexOf方法,如果返回值 = -1,表示没有;否则就具有指定样式类
+   - 定义结果变量 `ret` ,默认值为 `false`
+   - 遍历结果集的每一个 `dom` 元素,如果当前 `dom` 元素具有指定的样式类,将 `ret=true` 结束循环
+   - 返回 `ret` .
+
+   - 如何判断 `dom` 元素具有指定的样式类?
+     在 `dom` 元素所有的样式类的 `首位 + 空格` ;在用户指定的样式类 `首位 + 空格` 调用 indexOf 方法,如果返回值 = -1,表示没有;否则就具有指定样式类
 
 ```js
 hasClass: function(className) {
@@ -49,16 +50,17 @@ hasClass: function(className) {
 },
 ```
 
-## $.each方法
+## $.each 方法
 
 1. 功能:实现遍历数组或者伪数组,通过第二个参数(回调函数)来处理遍历到的每一个元素
-	在回调函数中, `this` 是指向当前遍历的元素.
+   在回调函数中, `this` 是指向当前遍历的元素.
 2. 语法: `$.each([数组/伪数组], callback)` ;
 3. 实现思路
-	* 声明 `each` 函数,定义两个形参,第一个 遍历的(伪)数组;第二: 回调函数
-	* 使用 `for` 循环,遍历(伪)数组,再循环体内部执行回调函数. 在执行时,给回调函数传实参
-	* 实现回调函数内部 `this` 指向,当前遍历到的元素
-	* 通过回调函数的返回值,判断是否结束循环. 规定:当返回值为 `false` ,结束循环
+   - 声明 `each` 函数,定义两个形参,第一个 遍历的(伪)数组;第二: 回调函数
+   - 使用 `for` 循环,遍历(伪)数组,再循环体内部执行回调函数. 在执行时,给回调函数传实参
+   - 实现回调函数内部 `this` 指向,当前遍历到的元素
+   - 通过回调函数的返回值,判断是否结束循环. 规定:当返回值为 `false` ,结束循环
+
 ```js
 each: function(obj, callback) {
 	var i = 0,
@@ -72,17 +74,17 @@ each: function(obj, callback) {
 }
 ```
 
-## itcast中链式编程的实现
+## itcast 中链式编程的实现
 
 1. 返回当前方法的调用者: `return this;`
 
-## get方法
+## get 方法
 
 1. 功能:根据参数 `index` ,获取相应 `dom` 元素
 2. 实现思路
-	* 将字符串类型转换成数字
-	*  `index < 0 ==> index +length`
-	*  `return this[index]`
+   - 将字符串类型转换成数字
+   - `index < 0 ==> index +length`
+   - `return this[index]`
 
 ```js
 get: function(index) {
@@ -92,7 +94,7 @@ get: function(index) {
 },
 ```
 
-## eq方法
+## eq 方法
 
 1. 功能:根据参数 `index` ,获取相应 `dom` 元素,转换成 `itcast` 对象,并且返回
 
@@ -102,7 +104,7 @@ eq: function(index) {
 },
 ```
 
-## first方法
+## first 方法
 
 ```js
 first: function() {
@@ -110,7 +112,7 @@ first: function() {
 },
 ```
 
-## last方法
+## last 方法
 
 ```js
 last: function() {
@@ -118,17 +120,18 @@ last: function() {
 }
 ```
 
-## css方法
+## css 方法
 
 1. 功能:
-	* 获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值
-	* 设置:a,如果只传一个参数并且类型为对象,设置多个样式值; b,传入两个参数,设置单个样式.
+   - 获取:如果只传一个参数并且类型不为对象,获取相应的样式属性值
+   - 设置:a,如果只传一个参数并且类型为对象,设置多个样式值; b,传入两个参数,设置单个样式.
 2. 实现思路
-	* 给 `itcast` 原型添加 `css` 方法,定义两个参数.
-	* 如果只传入一个参数
-		* 类型为对象的话,同时设置多个样式属性
-		* 类型不为对象,获取指定的样式值
-	* 如果只传入两个参数,设置单个样式值
+   - 给 `itcast` 原型添加 `css` 方法,定义两个参数.
+   - 如果只传入一个参数
+     _ 类型为对象的话,同时设置多个样式属性
+     _ 类型不为对象,获取指定的样式值
+   - 如果只传入两个参数,设置单个样式值
+
 ```js
 css: function(name, value) {
 	// 只传入一个参数
@@ -168,12 +171,12 @@ css: function(name, value) {
 },
 ```
 
-## addClass方法
+## addClass 方法
 
 1. 功能:给结果集中的每一个 `dom` 元素添加指定样式类.
 2. 实现思路
-	* 遍历 `this` 上的每一个 `dom` 元素
-	* 首先判断当前遍历到的 `dom` 元素是否含有样式类.
+   - 遍历 `this` 上的每一个 `dom` 元素
+   - 首先判断当前遍历到的 `dom` 元素是否含有样式类.
 
 ```js
 addClass: function(className) {
@@ -188,12 +191,13 @@ addClass: function(className) {
 },
 ```
 
-## removeClass方法
+## removeClass 方法
 
 1. 功能:删除结果集中的每一个 `dom` 元素的指定样式类.
 2. 实现思路
-	* 遍历 `this` 上的每一个 `dom` 元素
-	* `(' ' + v.className + ' ').replace(' ' + className + ' ',' ');`
+   - 遍历 `this` 上的每一个 `dom` 元素
+   - `(' ' + v.className + ' ').replace(' ' + className + ' ',' ');`
+
 ```js
 removeClass:function(className) {
 	// 遍历this上的每一个dom元素，并实现链式编程
@@ -205,14 +209,15 @@ removeClass:function(className) {
 }
 ```
 
-## toggleClass方法
+## toggleClass 方法
 
 1. 功能: 切换指定的样式类,如果有,就删除,没有就添加
 2. 实现思路
-	* 遍历 `this` 上的每一个 `dom` 元素
-	* 判断当前遍历到的 `dom` 元素是否含有指定的样式类
-	* 如果有,就删除
-	* 如果没有,就添加
+   - 遍历 `this` 上的每一个 `dom` 元素
+   - 判断当前遍历到的 `dom` 元素是否含有指定的样式类
+   - 如果有,就删除
+   - 如果没有,就添加
+
 ```js
 toggleClass: function(className) {
 	// 遍历this上的每一个dom元素，并实现链式编程

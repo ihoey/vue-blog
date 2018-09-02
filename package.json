@@ -4,7 +4,11 @@
   "main": "index.js",
   "author": "ihoey <mail@ihoey.com> (https://blog.ihoey.com/)",
   "license": "MIT",
-  "dependencies": {
-    "peco": "^0.1.6"
+  "scripts": {
+    "dev": "peco dev",
+    "build": "peco build"
+  },
+  "devDependencies": {
+    "peco": "latest"
   }
 }

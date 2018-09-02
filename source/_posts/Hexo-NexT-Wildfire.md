@@ -14,7 +14,7 @@ categories: Linux
 
 ## 修改 NexT 评论模板
 
-在你的博客项目中，打开./themes/next/layout/_partials/comments.swig 这个文件。
+在你的博客项目中，打开./themes/next/layout/\_partials/comments.swig 这个文件。
 将文件尾部的内容：
 
 ```html

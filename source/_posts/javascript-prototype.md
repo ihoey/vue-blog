@@ -19,53 +19,54 @@ categories: javascript
 原型中的所有成员都可以被和其关联的构造函数创建出来的对象访问
 
 ```js
-function Person(name, age){
-    this.name = name;
-    this.age = age;
+function Person(name, age) {
+  this.name = name
+  this.age = age
 }
 ```
 
 如何利用原型解决构造函数存在的问题？
-* 利用原型的特性，将方法放到原型中去，供所有的对象访问
+
+- 利用原型的特性，将方法放到原型中去，供所有的对象访问
 
 ## 如何访问原型？
 
-* 构造函数`.prototype`
+- 构造函数`.prototype`
 
 ```js
-console.log(typeof Person.prototype);
-console.log(Person.prototype);
+console.log(typeof Person.prototype)
+console.log(Person.prototype)
 ```
 
 ## 如何使用原型？
 
-* 使用对象的动态特性，为原型对象新增成员
+- 使用对象的动态特性，为原型对象新增成员
 
 ```js
-Person.prototype.eat = function () {
-    console.log("吃个大鸡腿儿");
+Person.prototype.eat = function() {
+  console.log('吃个大鸡腿儿')
 }
 
-var p  = new Person();
-p.eat();
-var p1 = new Person();
-p1.eat();
+var p = new Person()
+p.eat()
+var p1 = new Person()
+p1.eat()
 
-console.log(p.eat == p1.eat);
+console.log(p.eat == p1.eat)
 ```
 
-* 直接替换原型对象
+- 直接替换原型对象
 
 ```js
 Person.prototype = {
-    run:function(){
-        console.log("李二狗正在以时速1cm每小时的速度奔向餐厅");
-    }
-};
+  run: function() {
+    console.log('李二狗正在以时速1cm每小时的速度奔向餐厅')
+  }
+}
 
-console.log(Person.prototype);
-var p2 = new Person();
-p2.run();
+console.log(Person.prototype)
+var p2 = new Person()
+p2.run()
 ```
 
 ## 原型使用的注意事项
@@ -78,48 +79,43 @@ p2.run();
 4. 在替换原型对象的时候，要注意：替换之前创建出来的对象的原型和替换之后创建出来的对象的原型会不一致
 
 ```js
-function Person(){
-
-}
+function Person() {}
 
 //Person.prototype.name = "张三";
-Person.prototype.sing = function () {
-    console.log("Take me to your heart!");
+Person.prototype.sing = function() {
+  console.log('Take me to your heart!')
 }
-var p = new Person();
+var p = new Person()
 //console.log(p.name);  //张三
-p.sing();  //可以
+p.sing() //可以
 
 //p.name = "李四";
 //console.log(p.name);  //李四
 
-Person.prototype = {
+Person.prototype = {}
 
-};
-
-var p1 = new Person();
+var p1 = new Person()
 //console.log(p1.name); //张三
-p1.sing();//不可以
+p1.sing() //不可以
 
-p.sing();//不可以  or  可以
+p.sing() //不可以  or  可以
 ```
 
 ## 原型的访问方式
 
 1. 通过 `构造函数.prototype` 去访问
 2. 通过 `对象.__proto__` 去访问
-	注：__proto__这个属性 是非标准的！！！ 不推荐在开发过程中使用，只用于调试代码
+   注：**proto**这个属性 是非标准的！！！ 不推荐在开发过程中使用，只用于调试代码
 
-* __.proto__用法
+- **.proto**用法
 
 ```js
-function Person(){
-}
+function Person() {}
 Person.prototype = {
-    name : "迈克学摇滚",
-    song : "Take me to your heart"
+  name: '迈克学摇滚',
+  song: 'Take me to your heart'
 }
-var p = new Person();
-p.__proto__.count = 100;
-console.log(p.__proto__);
+var p = new Person()
+p.__proto__.count = 100
+console.log(p.__proto__)
 ```

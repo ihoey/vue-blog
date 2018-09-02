@@ -14,7 +14,7 @@ categories:
 
 <!-- more -->
 
->方案一
+> 方案一
 
 ## 登录数据库
 
@@ -41,7 +41,7 @@ create database test;
 use test;
 ```
 
-## 导入sql文件
+## 导入 sql 文件
 
 ```bash
 source db-test.sql;
@@ -60,7 +60,7 @@ show tables;
 exit;
 ```
 
->方案二
+> 方案二
 
 ```bash
 mysql -u root -p123 test < test.sql

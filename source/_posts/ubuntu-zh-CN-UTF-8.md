@@ -40,7 +40,7 @@ LANGUAGE="zh_CN:zh:en_US:en"
 sudo vim /var/lib/locales/supported.d/local
 ```
 
-添加zh_CN.GB2312字符集，如下:
+添加 zh_CN.GB2312 字符集，如下:
 
 ```bash
 en_US.UTF-8 UTF-8

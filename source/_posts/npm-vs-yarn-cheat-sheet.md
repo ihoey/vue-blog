@@ -36,6 +36,7 @@ npm install taco@latest --save === yarn add taco
 npm install taco --global === yarn global add taco
 # 一如既往，请谨慎使用 global 标记。
 ```
+
 > 你可以使用 `yarn self-update` 来更新它自己
 
 ## 相同操作的命令
@@ -60,11 +61,11 @@ npm install --production === yarn --production
 我跳过了一些提醒我们不要使用的内容，如 `yarn clean`。
 
 ```bash
-yarn licenses ls 
+yarn licenses ls
 # 允许您检查您的依赖的许可证
-yarn licenses generate-disclaimer 
+yarn licenses generate-disclaimer
 # 自动创建您的许可证免责声明
-yarn why taco 
+yarn why taco
 # 确定为什么安装了 taco 检查为什么会安装 taco，详细列出依赖它的其他包(感谢 Olivier Combe).
 Emojis ⬆️
 速度 🏃⌁
@@ -87,9 +88,9 @@ npm visnup === NO EQUIVALENT
 
 这篇备忘手册的 `PDF` 版本特别感谢 [Justin Huskey](https://medium.com/@justinhuskey)
 
-[PDF文件链接](https://infinite.red/files/yarn.pdf)
+[PDF 文件链接](https://infinite.red/files/yarn.pdf)
 
-## 相关链接
+##  相关链接
 
 https://yarn.bootcss.com/
 https://github.com/yarnpkg/yarn

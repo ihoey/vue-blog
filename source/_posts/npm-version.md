@@ -10,7 +10,7 @@ categories: Node
 
 # 提升一个包的版本号
 
-```shell
+```bash
 npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
 ```
 
@@ -18,11 +18,11 @@ npm version [<newversion> | major | minor | patch | premajor | preminor | prepat
 
 <!-- more -->
 
-参数 `newversion` 应该是一个有效的semver字符串, 或者是`pathch`, `minor`, `major`等,`semver.inc`中定义的任意一个有效的。
-`major`： 版本号中第一段数字自增1 `minor`: 版本号中第一段数字自增1 `patch`: 版本号中第三段数字自增1
+参数 `newversion` 应该是一个有效的 semver 字符串, 或者是`pathch`, `minor`, `major`等,`semver.inc`中定义的任意一个有效的。
+`major`： 版本号中第一段数字自增 1 `minor`: 版本号中第一段数字自增 1 `patch`: 版本号中第三段数字自增 1
 如果`package.json`中的`scripts`包含`version`,`preversion`,`postversion`，他们将作为`npm version`的一部分被执行。
 
-可以将此放入到npm script流中，自动化构建！
+可以将此放入到 npm script 流中，自动化构建！
 
 ## npm 不常用的命令
 

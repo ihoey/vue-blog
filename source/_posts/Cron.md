@@ -13,7 +13,6 @@ Windows 自带定时执行任务的工具叫做“计划任务”，Linux 下我
 
 <!--more-->
 
-
 ## 安装 cron 服务
 
 - 通常 ubuntu 下自带 cron，如果没有也可以通过以下命令进行安装：`apt-get install cron`
@@ -28,19 +27,19 @@ Windows 自带定时执行任务的工具叫做“计划任务”，Linux 下我
 
 `crontab -e`
 
-来打开你的用户所属的crontab文件。第一次用这个命令，会让你选择文本编辑器，我选的是vim。选定的编辑器也可以使用
+来打开你的用户所属的 crontab 文件。第一次用这个命令，会让你选择文本编辑器，我选的是 vim。选定的编辑器也可以使用
 
 你也可以每次自己更改 `select-editor`
 
 ## 重启 cron 服务
 
-每次保存了crontab之后，我们还需要重启cron来应用这个计划任务。使用命令：`sudo service cron restart`
+每次保存了 crontab 之后，我们还需要重启 cron 来应用这个计划任务。使用命令：`sudo service cron restart`
 
 ## 管理任务计划文件
 
 cron 的所有任务计划都记录在 crontab 任务计划文件中，通过 crontab 命令对该任务文件进行管理。
 
-```sh
+```bash
 $ crontab -u root -e     #编辑用户 root 的计划任务文件
 
 $ crontab -e            #编辑当前用户的计划任务文件
@@ -54,7 +53,7 @@ $ crontab -r            #删除当前用户的计划任务文件
 
 ## cron 语法格式
 
-```sh
+```bash
 m h dom mon dow   command
 0-59 0-23 1-31 1-12 0-7  command
 ```
@@ -75,7 +74,7 @@ m h dom mon dow   command
 
 ## 任务示例
 
-```sh
+```bash
 ## 指定具体执行时间
 2   *  *  *  * ls    #每个小时的第2分钟执行一次 ls 命令
 30  7  *  *  * ls    #每天7：30执行一次 ls 命令
@@ -93,6 +92,6 @@ m h dom mon dow   command
 
 另外，使用 run-parts 可以运行指定目录下所有的脚本（注意脚本必须加上 “#!/bin/bash"，否则 run-parts 会调用失败）
 
-```sh
+```bash
 30 7 * * * run-parts /home   #每天7：30运行 /home 目录下的所有脚本
 ```

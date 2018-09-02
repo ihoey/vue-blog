@@ -9,7 +9,7 @@ categories: Markdown
 
 ## Markdown 介绍
 
-- *Markdown* 是一个 **轻量级  高效率** 的标记语言
+- _Markdown_ 是一个 **轻量级 高效率** 的标记语言
 - 轻量级标记语言，`2004` 年被 `John Gruber` 创造， 它允许人们“使用易读易写的纯文本格式编写文档”， Markdown 最重要的设计就是可读性， Markdown 可以选择性的转换为 `HTML` 文档格式， 很多网站目前都使用了 `Markdown` 或者其变种，例如 `Github` 、简书等大型社区。
 
 <!--more-->
@@ -25,7 +25,6 @@ categories: Markdown
 - 说明文档
 - 电子邮件
 
-
 ## Markdown 实时预览编辑器
 
 - dillinger
@@ -33,9 +32,9 @@ categories: Markdown
 - 简书
 - MarkdownPad
 - Sublime Text
-    * 配合 Markdown Preview 插件
+  - 配合 Markdown Preview 插件
 - Webstorm
-    * 配合插件
+  - 配合插件
 - gitbook
 
 实时预览工具只是为了达到所见即所得的效果而已， 适合初学者学习 `Markdown` ， 我们真正在进行写作的时候，其实是不需要实时预览的， 因为 Markdown 标记语言本身已经足够清晰了。
@@ -48,7 +47,7 @@ categories: Markdown
 
 ### Webstorm
 
-- 打开` webstorm` ，`File-->Setting-->输入plugin-->Install JetBrains plugin...-->输入markdown-->`点击右边的 `Install` ,安装完，重启 `webstorm`。
+- 打开`webstorm` ，`File-->Setting-->输入plugin-->Install JetBrains plugin...-->输入markdown-->`点击右边的 `Install` ,安装完，重启 `webstorm`。
 
 ### Visual Studio Code
 
@@ -80,8 +79,8 @@ categories: Markdown
 ### 无序列表
 
 - 一级列表建议使用 `-`
-    + 二级列表建议使用 `+`
-        * 三级列表建议使用 `*`
+  - 二级列表建议使用 `+`
+    - 三级列表建议使用 `*`
 
 ```Markdown
 - 一级标题
@@ -93,8 +92,8 @@ categories: Markdown
 
 1. 有序列表直接使用序列加一个点开头, 然后加一个
 2. 有序列表嵌套无序列表
-  - 有序列表中嵌套无需列表
-        + 有序列表中嵌套无需列表
+
+- 有序列表中嵌套无需列表 + 有序列表中嵌套无需列表
 
 ```Markdown
 2. 有序列表嵌套无序列表
@@ -103,8 +102,8 @@ categories: Markdown
 ```
 
 3. 有序列表嵌套有序列表
-    1. 有序列表嵌套有序列表
-        1. 有序列表嵌套有序列表
+   1. 有序列表嵌套有序列表
+      1. 有序列表嵌套有序列表
 
 ```Markdown
 3. 有序列表嵌套有序列表
@@ -151,11 +150,11 @@ categories: Markdown
 | 左对齐         | 居中对齐        | 右对齐 |
 ```
 
-| 表头           | 表头            | 表头   |
-| :------------- | :-------------: | -----: |
-| 左对齐         | 居中对齐        | 右对齐 |
-| 左对齐         | 居中对齐        | 右对齐 |
-| 左对齐         | 居中对齐        | 右对齐 |
+| 表头   |   表头   |   表头 |
+| :----- | :------: | -----: |
+| 左对齐 | 居中对齐 | 右对齐 |
+| 左对齐 | 居中对齐 | 右对齐 |
+| 左对齐 | 居中对齐 | 右对齐 |
 
 ## 代码框
 
@@ -180,4 +179,4 @@ categories: Markdown
 
 显示效果都一样：
 
-***
+---

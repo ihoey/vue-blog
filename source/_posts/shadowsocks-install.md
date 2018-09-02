@@ -11,14 +11,14 @@ categories: shadowsocks
 
 <!-- more -->
 
-## 安装shadowsocks依赖(我的服务器系统是ubuntu)
+## 安装 shadowsocks 依赖(我的服务器系统是 ubuntu)
 
 - `sudo -s` // 获取超级管理员权限
-- `apt-get update` // 更新apt-get
-- `apt-get install python-pip` // 安装python包管理工具pip
-- `pip install shadowsocks` // 安装shadowsocks
+- `apt-get update` // 更新 apt-get
+- `apt-get install python-pip` // 安装 python 包管理工具 pip
+- `pip install shadowsocks` // 安装 shadowsocks
 
-## 配置shadowsocks
+## 配置 shadowsocks
 
 - `vi /etc/shadowsocks.json`
 
@@ -52,7 +52,7 @@ categories: shadowsocks
   }
 ```
 
-## 优化shadowsocks服务
+## 优化 shadowsocks 服务
 
 - 在终端输入 `vi /etc/sysctl.d/local.conf`
 
@@ -103,7 +103,7 @@ categories: shadowsocks
 
 - 配置生效：`sysctl --system`
 
-## 开启shadowsocks服务
+## 开启 shadowsocks 服务
 
 - `ssserver -c /etc/shadowsocks.json -d start`
 
@@ -123,7 +123,7 @@ categories: shadowsocks
 
 - `ssserver -h`
 
-    如果出现故障，试试把`/etc/shadowsocks.json`里改为`"server"="0.0.0.0".` 小心不要掉`,`
+  如果出现故障，试试把`/etc/shadowsocks.json`里改为`"server"="0.0.0.0".` 小心不要掉`,`
 
 ## 开机启动
 

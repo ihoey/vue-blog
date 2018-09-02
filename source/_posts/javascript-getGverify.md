@@ -8,7 +8,7 @@ tags:
 categories: javascript
 ---
 
-本文实例为大家分享了js生成图形验证码的具体代码，供大家参考，具体内容如下
+本文实例为大家分享了 js 生成图形验证码的具体代码，供大家参考，具体内容如下
 
 <!-- more -->
 
@@ -155,7 +155,7 @@ getGVerify: function(id) {
 ## 调用方法
 
 ```javascript
-var verifyCode = new GVerify(id);
+var verifyCode = new GVerify(id)
 ```
 
 ## 验证方法

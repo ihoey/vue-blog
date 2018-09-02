@@ -5,7 +5,7 @@ tags: javascript
 categories: javascript
 ---
 
-javascript高级与面向对象笔记整理，接part1篇！！
+javascript 高级与面向对象笔记整理，接 part1 篇！！
 
 <!-- more -->
 
@@ -32,8 +32,8 @@ javascript高级与面向对象笔记整理，接part1篇！！
 
 ```js
 var obj = {
-    key: value,
-    key: value
+  key: value,
+  key: value
 }
 ```
 
@@ -42,7 +42,7 @@ var obj = {
 ### 内置构造函数创建对象
 
 ```js
-var obj = new Object();
+var obj = new Object()
 ```
 
 每次创建出来的对象都是空对象，需要手动的去添加成员
@@ -55,19 +55,19 @@ var obj = new Object();
 
 ### 构造函数的特点
 
-* 函数的首字母大写
-* 一般和 `new` 关键字配合使用
-* 没有 `return` 语句，返回值默认为创建出来的对象
-* 手动添加 `return` 语句的时候
-* 如果 `return` 的是基本类型的数据，则不会对默认的返回有任何的影响
-* 如果 `return` 的是对象类型的数据，则会替换掉默认的返回值
+- 函数的首字母大写
+- 一般和 `new` 关键字配合使用
+- 没有 `return` 语句，返回值默认为创建出来的对象
+- 手动添加 `return` 语句的时候
+- 如果 `return` 的是基本类型的数据，则不会对默认的返回有任何的影响
+- 如果 `return` 的是对象类型的数据，则会替换掉默认的返回值
 
 ### 构造函数的执行步骤
 
-* 使用 `new` 关键字创建对象
-* 调用构造函数，将 `this` 赋值为 `new` 关键字创建出来的对象
-* 在构造函数中，使用 `this` 为新创建的对象新增成员
-* 默认返回新创建的这个对象
+- 使用 `new` 关键字创建对象
+- 调用构造函数，将 `this` 赋值为 `new` 关键字创建出来的对象
+- 在构造函数中，使用 `this` 为新创建的对象新增成员
+- 默认返回新创建的这个对象
 
 ## 面向对象的三大特性
 
@@ -81,7 +81,7 @@ var obj = new Object();
 
 ### 多态
 
-JS中没有多态
+JS 中没有多态
 父类的指针指向子类的对象
 
 ## 原型
@@ -90,8 +90,8 @@ JS中没有多态
 
 如果将方法的定义写在构造函数中，每次创建对象的时候，都会重新的创建一个新的方法，每个对象独占一个方法，但是所有对象的该方法都是一样的，会造成资源浪费
 
-* 在外部声明函数，每次创建对象的时候，将外部的函数引用赋值给当前对象的方法，这样就能保证所有的对象都指向构造函数外部的这个函数
-* 使用原型
+- 在外部声明函数，每次创建对象的时候，将外部的函数引用赋值给当前对象的方法，这样就能保证所有的对象都指向构造函数外部的这个函数
+- 使用原型
 
 ### 原型是什么
 
@@ -103,30 +103,30 @@ JS中没有多态
 
 ### 如何访问原型对象
 
-* 构造函数 `.prototype`
-* 对象 `.__proto__` (不推荐使用，因为有兼容性问题，调试的时候可以使用)
+- 构造函数 `.prototype`
+- 对象 `.__proto__` (不推荐使用，因为有兼容性问题，调试的时候可以使用)
 
 ### 原型的使用方式
 
-* 利用对象的动态特性为原型添加成员
-* 直接替换原型对象
+- 利用对象的动态特性为原型添加成员
+- 直接替换原型对象
 
 ### 原型的使用注意事项
 
-* 一般情况只将方法放在原型中，属性放在对象中
-* 对象在获取属性的时候，会现在自身查找，如果找到了直接使用，如果没有找到，就去原型中查找，如果找到了就使用
-* 对象在设置属性的时候，不会去原型中查找了，只在自身进行查找，如果找到了，就修改，如果没有找到，就新增
-* 在替换原型对象的时候，需要注意：替换之前创建的对象和替换之后创建的对象的原型不一致
+- 一般情况只将方法放在原型中，属性放在对象中
+- 对象在获取属性的时候，会现在自身查找，如果找到了直接使用，如果没有找到，就去原型中查找，如果找到了就使用
+- 对象在设置属性的时候，不会去原型中查找了，只在自身进行查找，如果找到了，就修改，如果没有找到，就新增
+- 在替换原型对象的时候，需要注意：替换之前创建的对象和替换之后创建的对象的原型不一致
 
 ## 继承的实现方式
 
 ### 混入式继承（ `mix-in` ）
 
 ```js
-var obj = {};
-var obj1 = {name:"adsf",age:18};
-for(var k in obj1){
-    obj[k] = obj1[k];
+var obj = {}
+var obj1 = { name: 'adsf', age: 18 }
+for (var k in obj1) {
+  obj[k] = obj1[k]
 }
 ```
 
@@ -135,34 +135,34 @@ for(var k in obj1){
 #### 1.使用混入的方式为原型对象添加成员、
 
 ```js
-var human = {name:"",age:18}
-function Person(){};
+var human = { name: '', age: 18 }
+function Person() {}
 
-for(var k in human){
-    Person.prototype[k] = human[k];
+for (var k in human) {
+  Person.prototype[k] = human[k]
 }
 ```
 
 #### 2.直接修改原型对象
 
 ```js
-function Person(){}
-Person.prototype.name = "";
-Person.prototype.age = 18;
+function Person() {}
+Person.prototype.name = ''
+Person.prototype.age = 18
 ```
 
 #### 3.替换原型对象
 
 ```js
-var human = {name:"",age:18}
-function Person(){};
-Person.prototype = human;
+var human = { name: '', age: 18 }
+function Person() {}
+Person.prototype = human
 ```
 
 ### 经典继承
 
 ```js
-var obj = Object.create(obj1);
+var obj = Object.create(obj1)
 //创建出来一个新的对象obj继承自obj1
 //原理就是把obj1设置为obj的原型
 ```
@@ -170,16 +170,16 @@ var obj = Object.create(obj1);
 #### 经典继承的兼容性问题
 
 ```js
-function myCreate(obj){
-    //判断浏览器有没有Object.create方法
-    if(Object.create){
-        //如果有，直接调用
-        return Object.create(obj);
-    }else{
-        function F(){}
-        F.prototype = obj;
-        return new F();
-    }
+function myCreate(obj) {
+  //判断浏览器有没有Object.create方法
+  if (Object.create) {
+    //如果有，直接调用
+    return Object.create(obj)
+  } else {
+    function F() {}
+    F.prototype = obj
+    return new F()
+  }
 }
 ```
 
